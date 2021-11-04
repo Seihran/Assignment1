@@ -98,6 +98,6 @@ public class Student
 
     @Override
     public String toString() {
-        return getUsername() + ", " + id + ", " + getCrseProg().getCourseName() + ", " + getModuleNames();
+        return getUsername() + ", " + id + ", " + getCrseProg().getCourseName() + "\n" + getModuleNames() + "\n";
     }
 }
