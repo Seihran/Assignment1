@@ -1,3 +1,5 @@
+package com.testpackage.seassignment1;
+
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 
@@ -18,6 +20,19 @@ public class CourseProgramme
         this.studentList = new ArrayList<Student>();
     }
 
+    public void addModule(Module module)
+    {
+        modulesList.add(module);
+    }
+
+    public void removeModule(Module module)
+    {
+        if (modulesList.contains(module))
+        {
+            modulesList.remove(module);
+        }
+    }
+
     public String getCourseName() {
         return courseName;
     }
@@ -28,10 +43,6 @@ public class CourseProgramme
 
     public ArrayList<Module> getModulesList() {
         return modulesList;
-    }
-
-    public void setModulesList(ArrayList<Module> modulesList) {
-        this.modulesList = modulesList;
     }
 
     public ArrayList<Student> getStudentList() {
