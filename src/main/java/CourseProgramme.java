@@ -78,7 +78,7 @@ public class CourseProgramme
     @Override
     public String toString() {
         return courseName + "\n" + modulesList + "\n" + studentList +
-                "Start Date = " + startDate +
+                "Start Date = " + startDate + "\n" +
                 "End Date = " + endDate;
     }
 }
