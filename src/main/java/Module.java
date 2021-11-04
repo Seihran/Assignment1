@@ -67,6 +67,6 @@ public class Module
 
     @Override
     public String toString() {
-        return id + ", " + name + "\n" + students;
+        return id + ", " + name;
     }
 }

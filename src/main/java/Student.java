@@ -71,7 +71,8 @@ public class Student
         this.id = id;
     }
 
-    public CourseProgramme getCrseProg() {
+    public CourseProgramme getCrseProg()
+    {
         return crseProg;
     }
 
@@ -97,6 +98,6 @@ public class Student
 
     @Override
     public String toString() {
-        return getUsername() + " " + id + crseProg.getCourseName() + getModuleNames();
+        return getUsername() + ", " + id + ", " + getCrseProg().getCourseName() + ", " + getModuleNames();
     }
 }
