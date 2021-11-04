@@ -85,13 +85,18 @@ public class Student
         return currModules;
     }
 
+    public String getModuleNames()
+    {
+        String names = "";
+        for (int i=0;i<currModules.size();i++)
+        {
+            names += currModules.get(i).getId() + "\n";
+        }
+        return names;
+    }
+
     @Override
     public String toString() {
-        return "Student{" +
-                "username='" + getUsername() + '\'' +
-                ", id=" + id +
-                ", crseProg=" + crseProg +
-                ", currModules=" + currModules +
-                '}';
+        return getUsername() + " " + id + crseProg.getCourseName() + getModuleNames();
     }
 }
