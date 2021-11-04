@@ -13,7 +13,6 @@ public class Student
         this.name = name;
         this.dob = dob;
         this.age = age;
-        getUsername();
         this.id = id;
         currModules = new ArrayList<Module>();
     }
@@ -21,6 +20,22 @@ public class Student
     public String getUsername()
     {
         return name + age;
+    }
+
+    public void addModule(Module module)
+    {
+        if (!currModules.contains(module))
+        {
+            currModules.add(module);
+        }
+    }
+
+    public void removeModule(Module module)
+    {
+        if (currModules.contains(module))
+        {
+            currModules.remove(module);
+        }
     }
 
     public String getName()
@@ -60,15 +75,23 @@ public class Student
         return crseProg;
     }
 
-    public void setCrseProg(CourseProgramme crseProg) {
+    public void setCrseProg(CourseProgramme crseProg)
+    {
         this.crseProg = crseProg;
     }
 
-    public ArrayList<Module> getCurrModules() {
+    public ArrayList<Module> getCurrModules()
+    {
         return currModules;
     }
 
-    public void setCurrModules(ArrayList<Module> currModules) {
-        this.currModules = currModules;
+    @Override
+    public String toString() {
+        return "Student{" +
+                "username='" + getUsername() + '\'' +
+                ", id=" + id +
+                ", crseProg=" + crseProg +
+                ", currModules=" + currModules +
+                '}';
     }
 }

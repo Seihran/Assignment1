@@ -1,5 +1,3 @@
-package com.testpackage.seassignment1;
-
 import java.util.ArrayList;
 import org.joda.time.DateTime;
 
@@ -23,6 +21,10 @@ public class CourseProgramme
     public void addModule(Module module)
     {
         modulesList.add(module);
+        for(int i=0;i<module.getStudents().size();i++)
+        {
+            studentList.add(module.getStudents().get(i));
+        }
     }
 
     public void removeModule(Module module)
@@ -30,6 +32,10 @@ public class CourseProgramme
         if (modulesList.contains(module))
         {
             modulesList.remove(module);
+            for(int i=module.getStudents().size()-1;i>=0;i--)
+            {
+                studentList.remove(module.getStudents().get(i));
+            }
         }
     }
 
@@ -67,5 +73,16 @@ public class CourseProgramme
 
     public void setEndDate(DateTime endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseProgramme{" +
+                "courseName='" + courseName + '\'' +
+                ", modulesList=" + modulesList +
+                ", studentList=" + studentList +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }

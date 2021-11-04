@@ -1,18 +1,33 @@
 import java.util.ArrayList;
 
-
 public class Module
 {
     private String name, id;
     private ArrayList<Student> students;
     private ArrayList<CourseProgramme> courses;
 
-    public Module(String name, String id)
+    public Module(String id, String name)
     {
         this.name = name;
         this.id = id;
         this.students = new ArrayList<Student>();
         this.courses = new ArrayList<CourseProgramme>();
+    }
+
+    public void addStudent(Student student)
+    {
+        if (!students.contains(student))
+            students.add(student);
+            student.addModule(this);
+    }
+
+    public void removeStudent(Student student)
+    {
+        if (students.contains(student))
+        {
+            students.remove(student);
+            student.removeModule(this);
+        }
     }
 
     public String getName()
@@ -50,9 +65,13 @@ public class Module
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students)
-    {
-        this.students = students;
+    @Override
+    public String toString() {
+        return "Module{" +
+                "name='" + name + '\'' +
+                ", id='" + id + '\'' +
+                ", students=" + students +
+                ", courses=" + courses +
+                '}';
     }
-
 }
