@@ -14,8 +14,8 @@ public class CourseProgramme
         this.courseName = courseName;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.modulesList = new ArrayList<Module>();
-        this.studentList = new ArrayList<Student>();
+        this.modulesList = new ArrayList<>();
+        this.studentList = new ArrayList<>();
     }
 
     public void addModule(Module module)
@@ -23,7 +23,10 @@ public class CourseProgramme
         modulesList.add(module);
         for(int i=0;i<module.getStudents().size();i++)
         {
-            studentList.add(module.getStudents().get(i));
+            if(!studentList.contains(module.getStudents().get(i)))
+            {
+                studentList.add(module.getStudents().get(i));
+            }
         }
     }
 
@@ -34,7 +37,13 @@ public class CourseProgramme
             modulesList.remove(module);
             for(int i=module.getStudents().size()-1;i>=0;i--)
             {
-                studentList.remove(module.getStudents().get(i));
+                for(int j=0;j<modulesList.size();j++)
+                {
+                    if(!modulesList.get(j).getStudents().contains(module.getStudents().get(i)))
+                    {
+                        studentList.remove(module.getStudents().get(i));
+                    }
+                }
             }
         }
     }
@@ -43,41 +52,9 @@ public class CourseProgramme
         return courseName;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
-    public ArrayList<Module> getModulesList() {
-        return modulesList;
-    }
-
-    public ArrayList<Student> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(ArrayList<Student> studentList) {
-        this.studentList = studentList;
-    }
-
-    public DateTime getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(DateTime startDate) {
-        this.startDate = startDate;
-    }
-
-    public DateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(DateTime endDate) {
-        this.endDate = endDate;
-    }
-
     @Override
     public String toString() {
-        return courseName + "Start Date = " + startDate + ", " + "End Date = " + endDate + "\n"
+        return courseName + ", " + "Start Date = " + startDate + ", " + "End Date = " + endDate + "\n"
                 + modulesList + "\n" + studentList;
     }
 }

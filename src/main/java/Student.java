@@ -14,7 +14,7 @@ public class Student
         this.dob = dob;
         this.age = age;
         this.id = id;
-        currModules = new ArrayList<Module>();
+        currModules = new ArrayList<>();
     }
 
     public String getUsername()
@@ -32,43 +32,7 @@ public class Student
 
     public void removeModule(Module module)
     {
-        if (currModules.contains(module))
-        {
-            currModules.remove(module);
-        }
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        currModules.remove(module);
     }
 
     public CourseProgramme getCrseProg()
@@ -79,11 +43,6 @@ public class Student
     public void setCrseProg(CourseProgramme crseProg)
     {
         this.crseProg = crseProg;
-    }
-
-    public ArrayList<Module> getCurrModules()
-    {
-        return currModules;
     }
 
     public String getModuleNames()
