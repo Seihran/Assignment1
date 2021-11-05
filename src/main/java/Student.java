@@ -45,7 +45,7 @@ public class Student
         this.crseProg = crseProg;
     }
 
-    public String getModuleNames()
+    public String getModuleIds()
     {
         String names = "";
         for (int i=0;i<currModules.size();i++)
@@ -57,6 +57,6 @@ public class Student
 
     @Override
     public String toString() {
-        return getUsername() + ", " + id + ", " + getCrseProg().getCourseName() + "\n" + getModuleNames() + "\n";
+        return getUsername() + ", " + id + ", " + getCrseProg().getCourseName() + "\n" + getModuleIds() + "\n";
     }
 }
