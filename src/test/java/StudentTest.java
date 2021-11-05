@@ -18,8 +18,6 @@ class StudentTest {
         m1 = new Module("EE347", "Embedded Systems Applications Programming");
         cp = new CourseProgramme("BP1", new DateTime("2021-01-01T00:00:00Z"),
                 new DateTime("2025-01-01T00:00:00Z"));
-        s.setCrseProg(cp);
-        s1.setCrseProg(cp);
     }
 
     @Test
@@ -31,24 +29,44 @@ class StudentTest {
     }
 
     @Test
-    public void test_addStudents()
+    public void test_Students()
     {
-        m.addStudent(s);
-        cp.addModule(m);
-        cp.addModule(m1);
-        System.out.println(cp);
+        s.setCrseProg(cp);
+        s.addModule(m);
+        s.addModule(m1);
+        s.removeModule(m1);
+        String expected = "EE451\n";
+        String id = s.getModuleIds();
+        assertEquals(expected, id);
     }
 
     @Test
-    public void test_removeModules()
+    public void test_Modules()
     {
+        s.setCrseProg(cp);
+        s1.setCrseProg(cp);
+        m.addStudent(s);
+        m.addStudent(s1);
+        m.removeStudent(s);
+        String expected = "[JudyDench17, 21548733, BP1\nEE451\n\n]";
+        String students = m.getStudents().toString();
+        assertEquals(expected, students);
+    }
+
+    @Test
+    public void test_CrseProgramme()
+    {
+        s.setCrseProg(cp);
+        s1.setCrseProg(cp);
         m.addStudent(s);
         m.addStudent(s1);
         m1.addStudent(s);
         cp.addModule(m);
         cp.addModule(m1);
-        System.out.println(cp);
         cp.removeModule(m);
-        System.out.println(cp);
+        String expected = "BP1, Start Date = 2021-01-01T00:00:00.000Z, End Date = 2025-01-01T00:00:00.000Z\n" +
+                "[EE347, Embedded Systems Applications Programming\n]\n[JohnDoe34, 21347030, BP1\nEE451\nEE347\n\n]";
+        String crseProgramme = cp.toString();
+        assertEquals(expected, crseProgramme);
     }
 }
